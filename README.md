@@ -41,7 +41,7 @@ Tailwind CSS (Configured within the Angular project)
     ng s --o
 
 4. for live demo:
-    https://products-gallery-three.vercel.app/home
+   https://products-gallery-2n7yxhvym-rehams-projects-bc209b3e.vercel.app/home
 
 
 ## Development server
