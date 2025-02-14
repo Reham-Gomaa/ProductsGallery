@@ -1,0 +1,50 @@
+
+<div [class]="data ? 'hidden':'flex justify-center items-center bg-black/70 absolute inset-0 z-50'">
+    <span class="loader block"></span>
+</div>
+
+@if (products != null) {
+    <section class="p-4 my-7">
+        <div class="mycontainer ">
+            <div class="relative max-w-sm mx-auto">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"/>
+                    </svg>
+                </div>
+                <input [(ngModel)]="searchKey" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full ps-10 p-2.5 " placeholder="Search by name..." required />
+            </div>
+   
+            <div class="my-14">
+                <owl-carousel-o [options]="customOptions">
+                    @for (product of products; track product.id) {
+                        <ng-template carouselSlide>
+                            <img class="h-[130px] object-contain " [src]="product.image" [alt]="product.title">
+                        </ng-template>
+                    }
+                  </owl-carousel-o>
+            </div>
+
+            <div class="my-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                @for (product of products |search: searchKey; ; track product.id) {
+                    <div [routerLink]="['/details' , product.id]" class="product overflow-hidden border-slate-200 border-[1px] p-7 rounded-md cursor-pointer hover:shadow-lg transition-all duration-300">
+                        <div class=" mt-4">
+                            <img class="object-contain h-[200px] mx-auto" [src]="product.image" [alt]="product.title">
+                        </div>
+                        <div class="mt-4">
+                            <h2 class="font-black">{{product.title.split(' ').slice(0,3).join(' ')}}</h2>
+                            <p class="mt-2">{{product.description.split(' ').slice(0,10).join(' ')}}</p>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <h3>{{product.price | currency : 'EGP'}}</h3>
+                            <span><li class="fa-solid fa-star active-text"></li>{{product.rating.rate}}</span>
+                        </div>
+                        <div class="btn mt-4 ">
+                            <button class="btn-bg rounded-full px-3 py-1 block mx-auto">Add to cart</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

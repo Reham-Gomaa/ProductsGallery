@@ -1,0 +1,25 @@
+<section class="p-4 my-5">
+    <div class="mycontainer">
+        @for (product of products; track product.id) {
+            @if (product.id == id) {
+                <div class="flex flex-wrap items-center product overflow-hidden border-slate-200 border-[1px] px-8 py-10 rounded-md">
+                        <div class=" mt-4 w-full md:w-[50%] lg:w-1/3">
+                            <img class="object-contain h-[200px] mx-auto" [src]="product.image" [alt]="product.title">
+                        </div>
+                        <div class="w-full md:w-[50%] lg:w-2/3">
+                            <div class="mt-4">
+                                <h2 class="font-black">{{product.title}}</h2>
+                                <h3>{{product.category}}</h3>
+                                <p class="mt-2 text-gray-700">{{product.description}}</p>
+                                <h3 class="mt-2">{{product.price | currency : 'EGP'}}</h3>
+                                <span class="mt-2 block"><li class="fa-solid fa-star active-text me-2"></li>{{product.rating.rate}}</span>
+                            </div>
+                            <div class="btn mt-4 ">
+                                <button class="btn-bg rounded-full px-3 py-1 block mx-auto">Add to cart</button>
+                            </div>
+                        </div>
+                </div>
+            }
+        }
+    </div>
+</section>
