@@ -30,8 +30,7 @@ Tailwind CSS (Configured within the Angular project)
 ### Steps to Run Locally  
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   git clone https://github.com/Reham-Gomaa/ProductsGallery.git
 
 2. Install Dependencies:
     ```cmd terminal
@@ -40,6 +39,9 @@ Tailwind CSS (Configured within the Angular project)
 3. Run the project:
     ```cmd terminal
     ng s --o
+
+4. for live demo:
+    https://products-gallery-three.vercel.app/home
 
 
 ## Development server
